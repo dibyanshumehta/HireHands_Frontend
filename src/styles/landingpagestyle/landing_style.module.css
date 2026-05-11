@@ -1,0 +1,22 @@
+
+/* For Landing Page Hero Section */
+.carousel_text{
+    margin-bottom: 200px;
+    margin-left: -140px;
+}
+
+/* For Landing page Service Section */
+.service_cards_row{
+    flex-wrap: nowrap !important;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: calc(100vh - 430px);
+
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+.service_cards_row::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
