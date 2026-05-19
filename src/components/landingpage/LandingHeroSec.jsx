@@ -40,25 +40,29 @@ const LandingHeroSec = () => {
                         </p>
 
                         <div className="d-flex gap-3 flex-wrap">
-                          <Link to="/userlogin">
-                            <button className="btn btn-primary btn-lg px-4">
-                              Hire a Worker
-                            </button>
-                          </Link>
+                          <button
+                            type="button"
+                            className="btn btn-primary btn-lg px-4"
+                            data-bs-toggle="modal"
+                            data-bs-target="#userloginmodal"
+                          >
+                            Hire a Worker
+                          </button>
 
-                          <Link to="/workerlogin">
-                            <button className="btn btn-outline-primary btn-lg px-4">
-                              Join as Worker
-                            </button>
-                          </Link>
+                          <button
+                            type="button"
+                            className="btn btn-outline-primary btn-lg px-4"
+                            data-bs-toggle="modal"
+                            data-bs-target="#workerloginmodal"
+                          >
+                            Join as Worker
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Add more slides here if needed */}
             </div>
           </div>
         </div>
