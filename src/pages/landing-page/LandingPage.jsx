@@ -98,16 +98,24 @@ function LandingPage() {
               >
                 <div className="row">
                   <div className="col-md-6 mb-3">
+                    <label className="form-label">Name</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+
+                  <div className="col-md-6 mb-3">
                     <label className="form-label">Username</label>
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Choose username"
+                      placeholder="Enter username"
                     />
                   </div>
-                </div>
 
-                <div className="row">
+                
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Email</label>
                     <input
@@ -125,7 +133,7 @@ function LandingPage() {
                       placeholder="Enter phone number"
                     />
                   </div>
-                </div>
+                
 
                 <div className="mb-3">
                   <label className="form-label">Password</label>
@@ -134,6 +142,7 @@ function LandingPage() {
                     className="form-control"
                     placeholder="Create password"
                   />
+                </div>
                 </div>
               </form>
 
@@ -155,7 +164,7 @@ function LandingPage() {
                               setuserauth("registration");
                             }}
                           >
-                            Don't have an account? Register Now
+                            Don't have an account? <span className="text-primary"> Register Now</span>
                           </span>
                         ) : (
                           <span
@@ -164,9 +173,7 @@ function LandingPage() {
                               setuserauth("login");
                             }}
                           >
-                            {userauth === "login"
-                              ? "Don't have an account? Register Now"
-                              : "Already have an account? Login Now"}
+                            Already have an account? <span className="text-primary"> Login Now </span>
                           </span>
                         )}
                       </p>
@@ -284,7 +291,6 @@ function LandingPage() {
                   </div>
                 </div>
 
-                <hr className="my-4" />
 
                 <h5 className="fw-semibold mb-3">Worker Details</h5>
 
@@ -323,14 +329,6 @@ function LandingPage() {
                   />
                 </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Bio / Description</label>
-                  <textarea
-                    rows="3"
-                    className="form-control"
-                    placeholder="Tell clients about yourself"
-                  ></textarea>
-                </div>
               </form>
 
               <div className="modal-footer">
@@ -351,7 +349,7 @@ function LandingPage() {
                               setworkerauth("registration");
                             }}
                           >
-                            Don't have an account? Register Now
+                            Don't have an account? <span className="text-primary"> Register Now </span>
                           </span>
                         ) : (
                           <span
@@ -360,9 +358,7 @@ function LandingPage() {
                               setworkerauth("login");
                             }}
                           >
-                            {workerauth === "login"
-                              ? "Don't have an account? Register Now"
-                              : "Already have an account? Login Now"}
+                            Already have an account? <span className="text-primary"> Login Now </span>
                           </span>
                         )}
                       </p>

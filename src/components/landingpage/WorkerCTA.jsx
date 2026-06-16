@@ -41,7 +41,7 @@ const WorkerCTA = () => {
                 </div>
               </div>
 
-              <button className="btn btn-primary btn-lg px-4">
+              <button type="button" className="btn btn-primary btn-lg px-4" data-bs-toggle="modal" data-bs-target="#workerloginmodal">
                 Join as Worker
               </button>
             </div>
