@@ -19,10 +19,13 @@ const WorkerSidebar = ({ activeTab, setActiveTab }) => {
 
   return (
     <div
-      className="bg-dark text-white d-flex flex-column p-3"
+      className="bg-dark text-white d-flex flex-column p-3 position-fixed"
       style={{
         width: "260px",
-        minHeight: "100vh",
+        height: "100vh",
+        left: 0,
+        top: 0,
+        zIndex: 1000,
       }}
     >
       {/* Brand */}

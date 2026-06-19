@@ -8,35 +8,36 @@ const userLoginHelper = () => {
         username : "",
         password : "",
     };
-    const [userFormData, setuserFormData] = useState(initialState);
-    const userAuthStore = useSelector((state) => state.auth);
+    const [userLoginFormData, setuserLoginFormData] = useState(initialState);
+    const userAuthStore = useSelector((state) => state.userAuth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    console.log(userAuthStore);
-    const handleUserFormChange = (e) => {
+    
+    const handleUserLoginFormChange = (e) => {
         const {name, value} = e.target;
-        setuserFormData({ ...userFormData, [name] : value});
+        setuserLoginFormData({ ...userLoginFormData, [name] : value});
     };
+    console.log(userAuthStore);
 
-    const handleUserFormSubmit = (e) => {
+    const handleUserLoginFormSubmit = (e) => {
         e.preventDefault();
-        if (userFormData.username === ""){
+        if (userLoginFormData.username === ""){
             alert("Please enter your username");
         }
-        if (userFormData.password === ""){
+        if (userLoginFormData.password === ""){
             alert("Please enter your password");
         }
-        dispatch(postUserLoginData(userFormData));
+        dispatch(postUserLoginData(userLoginFormData));
     };
 
     useEffect(() => {
-        if(userAuthStore.status === 200){
-            navigate("/userdashboard");
-        }
-    },[userAuthStore])
-
-    return {userFormData, handleUserFormChange, handleUserFormSubmit};
+        if(userAuthStore?.status === 201){
+            navigate("/userpage");
+            
+            }
+        },[userAuthStore])
+        
+        return {userLoginFormData, handleUserLoginFormChange, handleUserLoginFormSubmit};
 };
 
 export default userLoginHelper;

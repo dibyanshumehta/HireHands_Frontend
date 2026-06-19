@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { postUserLoginData, postUserRegistrationData } from "../../data-access/api/user/user-auth-api";
 
-const userauthSlice = createSlice({
-  name: "auth",
+const userAuthSlice = createSlice({
+  name: "userAuth",
   initialState: {
     user: null,
     loading: false,
@@ -50,4 +50,4 @@ const userauthSlice = createSlice({
   },
 });
 
-export default userauthSlice.reducer;
+export default userAuthSlice.reducer;

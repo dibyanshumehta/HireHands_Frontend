@@ -11,44 +11,44 @@ const userRegiatrationHelper = () => {
         phone : "",
         password : "",
     };
-    const [userFormData, setuserFormData] = useState(initialState);
-    const userAuthStore = useSelector((state) => state.auth);
+    const [userRegistrationFormData, setuserRegistrationFormData] = useState(initialState);
+    const userAuthStore = useSelector((state) => state.userAuth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleUserFormChange = (e) => {
+    const handleUserRegistrationFormChange = (e) => {
         const {name, value} = e.target;
-        setuserFromData({ ...userFormData, [name] : value});
+        setuserRegistrationFormData({ ...userRegistrationFormData, [name] : value});
     };
-    console.log(userFormData);
+    console.log(userRegistrationFormData);
 
-    const handleUserFormSubmit = (e) => {
+    const handleUserRegistrationFormSubmit = (e) => {
         e.preventDefault();
-        if (userFormData.name === ""){
+        if (userRegistrationFormData.name === ""){
             alert("Please enter your name");
         }
-        if (userFormData.username === ""){
+        if (userRegistrationFormData.username === ""){
             alert("Please enter your username");
         }
-        if (userFormData.email === ""){
+        if (userRegistrationFormData.email === ""){
             alert("Please enter your email");
         }
-        if (userFormData.phone === ""){
+        if (userRegistrationFormData.phone === ""){
             alert("Please enter your phone number");
         }
-        if (userFormData.password === ""){
+        if (userRegistrationFormData.password === ""){
             alert("Please enter your password");
         }
-        dispatch(postUserRegistrationData(userFormData));
+        dispatch(postUserRegistrationData(userRegistrationFormData));
     };
 
     useEffect(() => {
-        if (userAuthStore.status = 200){
-            navigate("/userdashboard");
+        if (userAuthStore?.status === 201){
+            navigate("/userpage");
         }
     },[userAuthStore]);
 
-    return { userFormData, handleUserFormChange, handleUserFormSubmit };
+    return { userRegistrationFormData, handleUserRegistrationFormChange, handleUserRegistrationFormSubmit };
 };
 
 export default userRegiatrationHelper;

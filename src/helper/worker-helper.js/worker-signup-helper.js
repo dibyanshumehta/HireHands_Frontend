@@ -14,54 +14,54 @@ const workerRegiatrationHelper = () => {
         experience : "",
         location : "",
     };
-    const [workerFormData, setworkerFormData] = useState(initialState);
-    const workerAuthStore = useSelector((state) => state.auth);
+    const [workerRegistrationFormData, setWorkerRegistrationFormData] = useState(initialState);
+    const workerAuthStore = useSelector((state) => state.workerauth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleWorkerFormChange = (e) => {
+    const handleWorkerRegistrationFormChange = (e) => {
         const {name, value} = e.target;
-        setworkerFromData({ ...workerFormData, [name] : value});
+        setworkerRegistrationFormData({ ...workerRegistrationFormData, [name] : value});
     };
-    console.log(workerFormData);
+    console.log(workerRegistrationFormData);
 
-    const handleWorkerFormSubmit = (e) => {
+    const handleWorkerRegistrationFormSubmit = (e) => {
         e.preventDefault();
-        if (workerFormData.name === ""){
+        if (workerRegistrationFormData.name === ""){
             alert("Please enter your name");
         }
-        if (workerFormData.username === ""){
+        if (workerRegistrationFormData.username === ""){
             alert("Please enter your username");
         }
-        if (workerFormData.email === ""){
+        if (workerRegistrationFormData.email === ""){
             alert("Please enter your email");
         }
-        if (workerFormData.phone === ""){
+        if (workerRegistrationFormData.phone === ""){
             alert("Please enter your phone number");
         }
-        if (workerFormData.password === ""){
+        if (workerRegistrationFormData.password === ""){
             alert("Please enter your password");
         }
-        if (workerFormData.skill === ""){
+        if (workerRegistrationFormData.skill === ""){
             alert("Please choose your skill");
         }
-        if (workerFormData.experience === ""){
+        if (workerRegistrationFormData.experience === ""){
             alert("Please enter your experience");
         }
-        if (workerFormData.location === ""){
+        if (workerRegistrationFormData.location === ""){
             alert("Please enter your location");
         }
 
-        dispatch(postworkerRegistrationData(workerFormData));
+        dispatch(postworkerRegistrationData(workerRegistrationFormData));
     };
 
     useEffect(() => {
-        if (workerAuthStore.status = 200){
-            navigate("/workerdashboard");
+        if (workerAuthStore?.status === 200){
+            navigate("/workerpage");
         }
     },[workerAuthStore]);
 
-    return { workerFormData, handleWorkerFormChange, handleWorkerFormSubmit };
+    return { workerRegistrationFormData, handleWorkerRegistrationFormChange, handleWorkerRegistrationFormSubmit };
 };
 
 export default workerRegiatrationHelper;

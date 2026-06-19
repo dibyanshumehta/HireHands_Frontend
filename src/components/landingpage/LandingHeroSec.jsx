@@ -2,7 +2,7 @@ import React from "react";
 import heroIllustration from "../../assets/landingpage/heroillustration.png";
 import { Link } from "react-router-dom";
 
-const LandingHeroSec = () => {
+const LandingHeroSec = ({setShowModel}) => {
   return (
     <>
       <section className="hero-section position-relative overflow-hidden bg-light">

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { postworkerLoginData, postworkerRegistrationData } from "../../data-access/api/worker/worker-auth-api";
 
-const workerauthSlice = createSlice({
-  name: "auth",
+const workerAuthSlice = createSlice({
+  name: "workerAuth",
   initialState: {
     user: null,
     loading: false,
@@ -19,12 +19,14 @@ const workerauthSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
+
       .addCase(postworkerRegistrationData.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.data;
         state.status = action.payload.data.status;
         status.message = "Regsitration Successful";
       })
+      
       .addCase(postworkerRegistrationData.rejected, (satte, action) => {
         status.loading = false;
         state.error = action.payload || "Failed to register";
@@ -50,4 +52,4 @@ const workerauthSlice = createSlice({
   },
 });
 
-export default workerauthSlice.reducer;
+export default workerAuthSlice.reducer;

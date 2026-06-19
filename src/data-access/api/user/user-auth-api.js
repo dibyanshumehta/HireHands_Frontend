@@ -2,10 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const postUserRegistrationData = createAsyncThunk(
-    "auth/postUserRegistrationData",
+    "userAuth/postUserRegistrationData",
     async (FormUserData, thunkAPI) => {
         try{
-            let userdata = await axios.post("http://localhost:3000/auth/usersignup", FormUserData);
+            let userdata = await axios.post("http://localhost:9000/auth/usersignup", FormUserData);
+            console.log(userdata);
             return thunkAPI. fulfillWithValue(userdata);
         } catch (error) {
             return thunkAPI.rejectWithValue("Something went wrong", error);
@@ -14,14 +15,15 @@ export const postUserRegistrationData = createAsyncThunk(
 );
 
 export const postUserLoginData = createAsyncThunk(
-    "auth/postuserLoginData",
+    "userAuth/postUserLoginData",
     async (FormUserData, thunkAPI) => {
         try {
-            let userdata = await axios.post("http://localhost:3000/auth/userlogin", FormUserData);
-            if (userdata.status === 200){
-                localStorage.setItem( "authToken", userdata.data.token);
+            let  data  = await axios.post("http://localhost:9000/auth/usersignin", FormUserData);
+           
+            if (data.status === 201){
+                localStorage.setItem( "authToken", data.data.token);
             }
-            return thunkAPI.fulfillWithValue(usedata);
+            return thunkAPI.fulfillWithValue(data);
         } catch (error) {
             return thunkAPI.rejectWithValue("Something went wrong", error);
         }

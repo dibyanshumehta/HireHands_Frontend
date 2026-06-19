@@ -9,14 +9,43 @@ import Howitworks from "../../components/landingpage/Howitworks";
 import LandingFeatures from "../../components/landingpage/LandingFeatures";
 import WorkerCTA from "../../components/landingpage/WorkerCTA";
 import LandingFooter from "../../components/landingpage/LandingFooter";
+import userRegiatrationHelper from "../../helper/user-helper.js/user-signup-helper";
+import workerRegiatrationHelper from "../../helper/worker-helper.js/worker-signup-helper";
+import workerLoginHelper from "../../helper/worker-helper.js/worker-signin-helper";
+import userLoginHelper from "../../helper/user-helper.js/user-signin-helper";
 
 function LandingPage() {
-  const [userauth, setuserauth] = useState("login");
-  const [workerauth, setworkerauth] = useState("login");
+  const [userauth, setuserauth] = useState("userlogin");
+  const [workerauth, setworkerauth] = useState("workerlogin");
+
+  const {
+    userRegistrationFormData,
+    handleUserRegistrationFormChange,
+    handleUserRegistrationFormSubmit,
+  } = userRegiatrationHelper();
+
+  const {
+    workerRegistrationFormData,
+    handleWorkerRegistrationFormChange,
+    handleWorkerRegistrationFormSubmit,
+  } = workerRegiatrationHelper();
+
+  const {
+    workerLoginFormData,
+    handleWorkerLoginFormChange,
+    handleWorkerLoginFormSubmit,
+  } = workerLoginHelper();
+
+  const {
+    userLoginFormData,
+    handleUserLoginFormChange,
+    handleUserLoginFormSubmit,
+  } = userLoginHelper();
+
   return (
     <>
       <div className="container-fluid">
-        <div className="row mx-3">
+        <div className="row">
           <div className="col-lg-12 sticky-top">
             <LandingHeader />
           </div>
@@ -52,8 +81,8 @@ function LandingPage() {
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="userloginmodallabel">
-                {userauth === "login" ? "User Login" : "User Registration"}
+              <h1 className="modal-title fs-5" id="">
+                {userauth === "userlogin" ? "User Login" : "User Registration"}
               </h1>
 
               <button
@@ -64,10 +93,16 @@ function LandingPage() {
               ></button>
             </div>
             <div className="modal-body">
-              <form className={userauth === "login" ? "d-block" : "d-none"}>
+              <form
+                className={userauth === "userlogin" ? "d-block" : "d-none"}
+                onSubmit={handleUserLoginFormSubmit}
+              >
                 <div className="mb-3">
                   <label className="form-label">Username</label>
                   <input
+                    onChange={handleUserLoginFormChange}
+                    name="username"
+                    value={userLoginFormData.username}
                     type="text"
                     className="form-control"
                     placeholder="Enter username"
@@ -77,6 +112,9 @@ function LandingPage() {
                 <div className="mb-3">
                   <label className="form-label">Password</label>
                   <input
+                    onChange={handleUserLoginFormChange}
+                    name="password"
+                    value={userLoginFormData.password}
                     type="password"
                     className="form-control"
                     placeholder="Enter password"
@@ -91,15 +129,33 @@ function LandingPage() {
                     Forgot Password?
                   </a>
                 </div>
+
+                <div className="row">
+                  <div className="col-md-12 col-lg-12 text-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-50 py-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </div>
               </form>
 
               <form
-                className={userauth === "registration" ? "d-block" : "d-none"}
+                className={
+                  userauth === "userregistration" ? "d-block" : "d-none"
+                }
+                onSubmit={handleUserRegistrationFormSubmit}
               >
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Name</label>
                     <input
+                      onChange={handleUserRegistrationFormChange}
+                      name="name"
+                      value={userRegistrationFormData.name}
                       type="text"
                       className="form-control"
                       placeholder="Enter your name"
@@ -109,16 +165,21 @@ function LandingPage() {
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Username</label>
                     <input
+                      onChange={handleUserRegistrationFormChange}
+                      name="username"
+                      value={userRegistrationFormData.username}
                       type="text"
                       className="form-control"
                       placeholder="Enter username"
                     />
                   </div>
 
-                
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Email</label>
                     <input
+                      onChange={handleUserRegistrationFormChange}
+                      name="email"
+                      value={userRegistrationFormData.email}
                       type="email"
                       className="form-control"
                       placeholder="Enter email"
@@ -128,21 +189,38 @@ function LandingPage() {
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Phone Number</label>
                     <input
+                      onChange={handleUserRegistrationFormChange}
+                      name="phone"
+                      value={userRegistrationFormData.phone}
                       type="tel"
                       className="form-control"
                       placeholder="Enter phone number"
                     />
                   </div>
-                
 
-                <div className="mb-3">
-                  <label className="form-label">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Create password"
-                  />
+                  <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input
+                      onChange={handleUserRegistrationFormChange}
+                      name="password"
+                      value={userRegistrationFormData.password}
+                      type="password"
+                      className="form-control"
+                      placeholder="Create password"
+                    />
+                  </div>
                 </div>
+
+                <div className="row">
+                  <div className="col-md-12 col-lg-12 text-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-50 py-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Register
+                    </button>
+                  </div>
                 </div>
               </form>
 
@@ -150,30 +228,26 @@ function LandingPage() {
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-md-12 col-lg-12 text-center">
-                      <Link to="/userpage">
-                        <button className="btn btn-primary w-50 py-1">
-                          {userauth === "login" ? "Login" : "Register"}
-                        </button>
-                      </Link>
-
                       <p className="text-center mt-3 mb-0">
-                        {userauth === "login" ? (
+                        {userauth === "userlogin" ? (
                           <span
                             type="button"
                             onClick={() => {
-                              setuserauth("registration");
+                              setuserauth("userregistration");
                             }}
                           >
-                            Don't have an account? <span className="text-primary"> Register Now</span>
+                            Don't have an account?{" "}
+                            <span className="text-primary"> Register Now</span>
                           </span>
                         ) : (
                           <span
                             type="button"
                             onClick={() => {
-                              setuserauth("login");
+                              setuserauth("userlogin");
                             }}
                           >
-                            Already have an account? <span className="text-primary"> Login Now </span>
+                            Already have an account?{" "}
+                            <span className="text-primary"> Login Now </span>
                           </span>
                         )}
                       </p>
@@ -199,7 +273,7 @@ function LandingPage() {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="workerloginmodallabel">
-                {workerauth === "login"
+                {workerauth === "workerlogin"
                   ? "Worker Login"
                   : "Worker Registration"}
               </h1>
@@ -212,10 +286,16 @@ function LandingPage() {
               ></button>
             </div>
             <div className="modal-body">
-              <form className={workerauth === "login" ? "d-block" : "d-none"}>
+              <form
+                className={workerauth === "workerlogin" ? "d-block" : "d-none"}
+                onSubmit={handleWorkerLoginFormSubmit}
+              >
                 <div className="mb-3">
                   <label className="form-label">Username</label>
                   <input
+                    onChange={handleWorkerLoginFormChange}
+                    name="username"
+                    value={workerLoginFormData.username}
                     type="text"
                     className="form-control"
                     placeholder="Enter username"
@@ -225,6 +305,9 @@ function LandingPage() {
                 <div className="mb-3">
                   <label className="form-label">Password</label>
                   <input
+                    onChange={handleWorkerLoginFormChange}
+                    name="password"
+                    value={workerLoginFormData.password}
                     type="password"
                     className="form-control"
                     placeholder="Enter password"
@@ -239,15 +322,33 @@ function LandingPage() {
                     Forgot Password?
                   </a>
                 </div>
+
+                <div className="row">
+                  <div className="col-md-12 col-lg-12 text-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-50 py-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </div>
               </form>
 
               <form
-                className={workerauth === "registration" ? "d-block" : "d-none"}
+                className={
+                  workerauth === "workerregistration" ? "d-block" : "d-none"
+                }
+                onSubmit={handleWorkerRegistrationFormSubmit}
               >
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Name</label>
                     <input
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="name"
+                      value={workerRegistrationFormData.name}
                       type="text"
                       className="form-control"
                       placeholder="Enter your Name"
@@ -257,6 +358,9 @@ function LandingPage() {
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Username</label>
                     <input
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="username"
+                      value={workerRegistrationFormData.username}
                       type="text"
                       className="form-control"
                       placeholder="Enter your Username"
@@ -266,6 +370,9 @@ function LandingPage() {
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Email</label>
                     <input
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="email"
+                      value={workerRegistrationFormData.email}
                       type="email"
                       className="form-control"
                       placeholder="Enter email"
@@ -275,6 +382,9 @@ function LandingPage() {
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Phone Number</label>
                     <input
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="phone"
+                      value={workerRegistrationFormData.phone}
                       type="tel"
                       className="form-control"
                       placeholder="Enter phone number"
@@ -284,6 +394,9 @@ function LandingPage() {
                   <div className="mb-3 col-md-6">
                     <label className="form-label">Password</label>
                     <input
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="password"
+                      value={workerRegistrationFormData.password}
                       type="password"
                       className="form-control"
                       placeholder="Create password"
@@ -291,13 +404,17 @@ function LandingPage() {
                   </div>
                 </div>
 
-
                 <h5 className="fw-semibold mb-3">Worker Details</h5>
 
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Primary Skill</label>
-                    <select className="form-select">
+                    <select
+                      className="form-select"
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="skill"
+                      value={workerRegistrationFormData.skill}
+                    >
                       <option>Select Skill</option>
                       <option>Cook</option>
                       <option>Plumber</option>
@@ -313,6 +430,9 @@ function LandingPage() {
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Experience</label>
                     <input
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="experience"
+                      value={workerRegistrationFormData.experience}
                       type="text"
                       className="form-control"
                       placeholder="e.g. 3 Years"
@@ -323,42 +443,52 @@ function LandingPage() {
                 <div className="mb-3">
                   <label className="form-label">Location</label>
                   <input
+                    onChange={handleWorkerRegistrationFormChange}
+                    name="location"
+                    value={workerRegistrationFormData.location}
                     type="text"
                     className="form-control"
                     placeholder="Enter your city / area"
                   />
                 </div>
 
+                <div className="row">
+                  <div className="col-md-12 col-lg-12 text-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-50 py-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Register
+                    </button>
+                  </div>
+                </div>
               </form>
 
               <div className="modal-footer">
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-md-12 col-lg-12 text-center">
-                      <Link to="/workerpage">
-                        <button className="btn btn-primary w-50 py-1">
-                          {workerauth === "login" ? "Login" : "Register"}
-                        </button>
-                      </Link>
-
                       <p className="text-center mt-3 mb-0">
-                        {workerauth === "login" ? (
+                        {workerauth === "workerlogin" ? (
                           <span
                             type="button"
                             onClick={() => {
-                              setworkerauth("registration");
+                              setworkerauth("workerregistration");
                             }}
                           >
-                            Don't have an account? <span className="text-primary"> Register Now </span>
+                            Don't have an account?{" "}
+                            <span className="text-primary"> Register Now </span>
                           </span>
                         ) : (
                           <span
                             type="button"
                             onClick={() => {
-                              setworkerauth("login");
+                              setworkerauth("workerlogin");
                             }}
                           >
-                            Already have an account? <span className="text-primary"> Login Now </span>
+                            Already have an account?{" "}
+                            <span className="text-primary"> Login Now </span>
                           </span>
                         )}
                       </p>

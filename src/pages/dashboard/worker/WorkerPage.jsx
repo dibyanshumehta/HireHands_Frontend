@@ -37,7 +37,9 @@ const WorkerPage = () => {
       />
 
       {/* Main Content */}
-      <div className="flex-grow-1 p-4">
+      <div className="flex-grow-1 p-4"
+        style= {{ marginLeft: "260px",}}
+      >
 
         <WorkerTopbar />
 

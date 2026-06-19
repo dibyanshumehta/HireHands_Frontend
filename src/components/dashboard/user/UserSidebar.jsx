@@ -7,9 +7,15 @@ import {
   FaUserCog,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserSidebar = ({ activeTab, setActiveTab }) => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    console.log("Logout clicked");
+    navigate("/");
+  }
   const menuItems = [
     { id: "overview", label: "Dashboard", icon: <FaHome /> },
     { id: "postJob", label: "Post Job", icon: <FaPlusCircle /> },
@@ -20,10 +26,13 @@ const UserSidebar = ({ activeTab, setActiveTab }) => {
 
   return (
     <div
-      className="bg-dark text-white d-flex flex-column p-3"
+      className="bg-dark text-white d-flex flex-column p-3 position-fixed"
       style={{
         width: "260px",
-        minHeight: "100vh",
+        height: "100vh",
+        left: 0,
+        top: 0,
+        zIndex: 1000,
       }}
     >
       {/* Logo / Brand */}
@@ -38,7 +47,7 @@ const UserSidebar = ({ activeTab, setActiveTab }) => {
           <li key={item.id}>
             <button
               onClick={() => setActiveTab(item.id)}
-              className={`btn w-100 d-flex align-items-center gap-3 text-start px-3 py-2 rounded-3 ${
+              className={`btn w-100 d-flex align-items-center gap-3 text-start px-2 py-2 rounded-3 ${
                 activeTab === item.id ? "btn-primary" : "btn-dark border-0"
               }`}
             >
@@ -51,8 +60,8 @@ const UserSidebar = ({ activeTab, setActiveTab }) => {
 
       {/* Logout */}
       <div className="mt-auto pt-4">
-        <Link to="/userlogin">
-          <button className="btn btn-outline-light w-100 d-flex align-items-center gap-2">
+        <Link to="/">
+          <button className="btn btn-outline-light w-100 d-flex align-items-center gap-2" onClick={() => { handleLogout(); }}>
             <FaSignOutAlt />
             Logout
           </button>
