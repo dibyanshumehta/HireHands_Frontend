@@ -7,13 +7,15 @@ import {
   FaUserCog,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../slice/user/user-auth-slice";
 import { Link, useNavigate } from "react-router-dom";
 
 const UserSidebar = ({ activeTab, setActiveTab }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    console.log("Logout clicked");
+    dispatch(logout());
     navigate("/");
   }
   const menuItems = [
@@ -60,12 +62,10 @@ const UserSidebar = ({ activeTab, setActiveTab }) => {
 
       {/* Logout */}
       <div className="mt-auto pt-4">
-        <Link to="/">
-          <button className="btn btn-outline-light w-100 d-flex align-items-center gap-2" onClick={() => { handleLogout(); }}>
+          <button className="btn btn-outline-light w-100 d-flex align-items-center gap-2" onClick={handleLogout}>
             <FaSignOutAlt />
             Logout
           </button>
-        </Link>
       </div>
     </div>
   );

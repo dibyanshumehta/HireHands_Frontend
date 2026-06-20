@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { postUserLoginData, postUserRegistrationData } from "../../data-access/api/user/user-auth-api";
+import {
+  postUserLoginData,
+  postUserRegistrationData,
+} from "../../data-access/api/user/user-auth-api";
 
 const userAuthSlice = createSlice({
   name: "userAuth",
@@ -10,11 +13,20 @@ const userAuthSlice = createSlice({
     message: null,
     status: null,
   },
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.user = null;
+      state.loading = false;
+      state.error = null;
+      state.message = null;
+      state.status = null;
+      localStorage.removeItem("authToken");
+    },
+  },
   extraReducers: (builder) => {
     builder
 
-    // For User Registration
+      // For User Registration
       .addCase(postUserRegistrationData.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -30,7 +42,7 @@ const userAuthSlice = createSlice({
         state.error = action.payload || "Failed to register";
       })
 
-    // For User Login
+      // For User Login
       .addCase(postUserLoginData.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -49,5 +61,5 @@ const userAuthSlice = createSlice({
       });
   },
 });
-
+export const { logout } = userAuthSlice.actions;  
 export default userAuthSlice.reducer;

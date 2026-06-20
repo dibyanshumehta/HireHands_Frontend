@@ -1,13 +1,36 @@
-import React from "react";
+import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useState } from "react";
 import { FaBell, FaUserCircle } from "react-icons/fa";
 
 const UserTopbar = () => {
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+
+    const fetchToken = localStorage.getItem("authToken");
+    if(fetchToken) {
+      try{
+        const decodeToken = jwtDecode(fetchToken);
+        setUserData(decodeToken);
+        console.log("Decoded Token:", decodeToken);
+      } catch(error) {
+        console.error("Invalid token:", error);
+      }
+    }
+  },[]);
+
+
+
+
   return (
     <div className="bg-white shadow-sm px-4 py-3 d-flex justify-content-between align-items-center rounded-3">
 
       {/* Left Side */}
       <div>
-        <h4 className="fw-bold mb-0">Welcome Back 👋</h4>
+        {userData ? (
+        <h4 className="fw-bold mb-0">Welcome Back, {userData.username}</h4>
+        ) : (
+          <h4 className="fw-bold mb-0">Welcome Back, Client</h4>
+        )}
         <small className="text-muted">
           Manage your jobs and hire workers easily.
         </small>
@@ -30,9 +53,13 @@ const UserTopbar = () => {
         <div className="d-flex align-items-center gap-2">
           <FaUserCircle size={36} className="text-primary" />
           <div>
-            <p className="mb-0 fw-semibold">John Doe</p>
+            {userData ? (
+            <p className="mb-0 fw-semibold">{userData.username}</p>
+            ) : (
+              <p className="mb-0 fw-semibold">Client</p>
+            )}
             <small className="text-muted">Client</small>
-          </div>
+            </div>
         </div>
 
       </div>
