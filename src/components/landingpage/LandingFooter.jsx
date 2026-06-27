@@ -25,7 +25,7 @@ const LandingFooter = () => {
               <li className="mb-2"><a href="#" className="text-dark text-decoration-none">Home</a></li>
               <li className="mb-2"><a href="#" className="text-dark text-decoration-none">Services</a></li>
               <li className="mb-2"><a href="#" className="text-dark text-decoration-none">How It Works</a></li>
-              <li><a href="#" className="text-light text-decoration-none">About</a></li>
+              <li className="mb-2"><a href="#" className="text-dark text-decoration-none">About</a></li>
             </ul>
           </div>
 
@@ -35,7 +35,7 @@ const LandingFooter = () => {
             <ul className="list-unstyled">
               <li className="mb-2"><a href="#" className="text-dark text-decoration-none">About Us</a></li>
               <li className="mb-2"><a href="#" className="text-dark text-decoration-none">Privacy Policy</a></li>
-              <li><a href="#" className="text-light text-decoration-none">Terms & Conditions</a></li>
+              <li className="mb-2"><a href="#" className="text-dark text-decoration-none">Terms & Conditions</a></li>
             </ul>
           </div>
 

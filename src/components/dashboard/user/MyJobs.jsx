@@ -7,7 +7,7 @@ const MyJobs = () => {
       id: 1,
       title: "Need a Cook for Home",
       category: "Cook",
-      location: "Delhi",
+      address: "Delhi",
       status: "Active",
       applicants: 5,
     },
@@ -15,7 +15,7 @@ const MyJobs = () => {
       id: 2,
       title: "Plumber Required Urgently",
       category: "Plumber",
-      location: "Noida",
+      address: "Noida",
       status: "Closed",
       applicants: 3,
     },
@@ -23,7 +23,7 @@ const MyJobs = () => {
       id: 3,
       title: "Gardener for Weekly Maintenance",
       category: "Gardener",
-      location: "Ghaziabad",
+      address: "Ghaziabad",
       status: "Active",
       applicants: 7,
     },
@@ -47,7 +47,6 @@ const MyJobs = () => {
               <tr>
                 <th>Job Title</th>
                 <th>Category</th>
-                <th>Location</th>
                 <th>Status</th>
                 <th>Applicants</th>
                 <th>Actions</th>
@@ -59,7 +58,6 @@ const MyJobs = () => {
                 <tr key={job.id}>
                   <td>{job.title}</td>
                   <td>{job.category}</td>
-                  <td>{job.location}</td>
                   <td>
                     <span
                       className={`badge ${

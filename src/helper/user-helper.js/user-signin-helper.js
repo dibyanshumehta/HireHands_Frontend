@@ -16,8 +16,8 @@ const userLoginHelper = () => {
   const handleUserLoginFormChange = (e) => {
     const { name, value } = e.target;
     setuserLoginFormData({ ...userLoginFormData, [name]: value });
+    console.log(userAuthStore);
   };
-  console.log(userAuthStore);
 
   const handleUserLoginFormSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const userLoginHelper = () => {
       navigate("/userpage");
     }
   }, [userAuthStore]);
-
+ 
   return {
     userLoginFormData,
     handleUserLoginFormChange,

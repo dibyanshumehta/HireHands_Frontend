@@ -6,32 +6,32 @@ const availableJobs = [
     id: 1,
     title: "Need Home Cook",
     category: "Cook",
-    budget: "₹800/day",
-    location: "Delhi",
+    salary: "₹800/day",
+    address: "Delhi",
     posted: "2 hours ago",
   },
   {
     id: 2,
     title: "Urgent Plumbing Work",
     category: "Plumber",
-    budget: "₹1500",
-    location: "Noida",
+    salary: "₹1500",
+    address: "Noida",
     posted: "5 hours ago",
   },
   {
     id: 3,
     title: "Weekly Gardening Help",
     category: "Gardener",
-    budget: "₹1200/week",
-    location: "Ghaziabad",
+    salary: "₹1200/week",
+    address: "Ghaziabad",
     posted: "1 day ago",
   },
   {
     id: 4,
     title: "Need Babysitter",
     category: "Babysitter",
-    budget: "₹700/day",
-    location: "Meerut",
+    salary: "₹700/day",
+    address: "Meerut",
     posted: "3 hours ago",
   },
 ];
@@ -50,15 +50,8 @@ const AvailableJobs = () => {
       {/* Search / Filter */}
       <div className="card border-0 shadow-sm rounded-4 p-3 mb-4">
         <div className="row g-3">
-          <div className="col-md-4">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search jobs..."
-            />
-          </div>
 
-          <div className="col-md-4">
+          <div className="col-md-6">
             <select className="form-select">
               <option>Filter by Category</option>
               <option>Cook</option>
@@ -68,7 +61,7 @@ const AvailableJobs = () => {
             </select>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-3">
             <button className="btn btn-primary w-100">
               Search Jobs
             </button>
@@ -95,12 +88,12 @@ const AvailableJobs = () => {
 
               <div className="small text-muted mb-2">
                 <FaMoneyBillWave className="me-2" />
-                {job.budget}
+                {job.salary}
               </div>
 
               <div className="small text-muted mb-2">
                 <FaMapMarkerAlt className="me-2" />
-                {job.location}
+                {job.address}
               </div>
 
               <div className="small text-muted mb-4">

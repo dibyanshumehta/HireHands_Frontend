@@ -6,6 +6,7 @@ import Earnings from "../../../components/profile/Worker/WorkerEarnings";
 import WorkerProfile from "../../../components/profile/Worker/WorkerProfile";
 import WorkerSidebar from "../../../components/dashboard/worker/WorkerSidebar";
 import WorkerTopbar from "../../../components/dashboard/worker/WorkerTopbar";
+import WorkerPostJobForm from "../../../components/dashboard/worker/WorkerPostJobForm";
 
 const WorkerPage = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -16,6 +17,10 @@ const WorkerPage = () => {
         return <WorkerDashboardOverview />;
       case "availableJobs":
         return <AvailableJobs />;
+
+      case "workjobpost":
+        return <WorkerPostJobForm/>;
+          
       case "myApplications":
         return <MyApplications />;
       case "earnings":

@@ -20,3 +20,7 @@
 .service_cards_row::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera */
 }
+
+.otp_btn{
+    font-size: 10px !important;
+}

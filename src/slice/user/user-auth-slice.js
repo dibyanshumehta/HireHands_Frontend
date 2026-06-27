@@ -14,7 +14,7 @@ const userAuthSlice = createSlice({
     status: null,
   },
   reducers: {
-    logout: (state) => {
+    userlogout: (state) => {
       state.user = null;
       state.loading = false;
       state.error = null;
@@ -31,13 +31,15 @@ const userAuthSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
+
       .addCase(postUserRegistrationData.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.data;
-        state.status = action.payload.data.status;
-        status.message = "Regsitration Successful";
+        state.user = action.payload;
+        state.status = action.payload.status;
+        state.message = "Regsitration Successful";
       })
-      .addCase(postUserRegistrationData.rejected, (satte, action) => {
+      
+      .addCase(postUserRegistrationData.rejected, (state, action) => {
         status.loading = false;
         state.error = action.payload || "Failed to register";
       })
@@ -50,8 +52,8 @@ const userAuthSlice = createSlice({
 
       .addCase(postUserLoginData.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.data;
-        state.status = action.payload.data.status;
+        state.user = action.payload;
+        state.status = action.payload.status;
         state.message = "Login Successful";
       })
 
@@ -61,5 +63,6 @@ const userAuthSlice = createSlice({
       });
   },
 });
-export const { logout } = userAuthSlice.actions;  
+
+export const { userlogout } = userAuthSlice.actions;  
 export default userAuthSlice.reducer;

@@ -15,13 +15,13 @@ const WorkerDashboardOverview = () => {
       color: "primary",
     },
     {
-      title: "My Applications",
+      title: "Completed Jobs",
       value: 7,
       icon: <FaClipboardCheck size={24} />,
       color: "warning",
     },
     {
-      title: "Completed Jobs",
+      title: "My Applications",
       value: 24,
       icon: <FaStar size={24} />,
       color: "success",

@@ -7,14 +7,6 @@ import WorkerPage from "./pages/dashboard/worker/WorkerPage";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 
 function App() {
-  const [authToken, setAuthToken] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    if (token) {
-      setAuthToken(true);
-    }
-  },[]);
 
   return (
     <>

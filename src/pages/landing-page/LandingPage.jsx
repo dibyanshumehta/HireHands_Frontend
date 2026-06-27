@@ -175,18 +175,6 @@ function LandingPage() {
                   </div>
 
                   <div className="col-md-6 mb-3">
-                    <label className="form-label">Email</label>
-                    <input
-                      onChange={handleUserRegistrationFormChange}
-                      name="email"
-                      value={userRegistrationFormData.email}
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter email"
-                    />
-                  </div>
-
-                  <div className="col-md-6 mb-3">
                     <label className="form-label">Phone Number</label>
                     <input
                       onChange={handleUserRegistrationFormChange}
@@ -197,6 +185,26 @@ function LandingPage() {
                       placeholder="Enter phone number"
                     />
                   </div>
+
+                  {/* <div className="col-md-6 mb-3">
+                    <label className="form-label w-100 d-flex">
+                      OTP
+                      <button
+                        onClick={handleSendUserOtp}
+                        className={`btn btn-outline-primary ms-auto ${LandingStyles.otp_btn} `}
+                      >
+                        Get OTP
+                      </button>
+                    </label>
+                    <input
+                      onChange={handleUserRegistrationFormChange}
+                      name="otp"
+                      value={userRegistrationFormData.email}
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter otp"
+                    />
+                  </div> */}
 
                   <div className="mb-3">
                     <label className="form-label">Password</label>
@@ -368,18 +376,6 @@ function LandingPage() {
                   </div>
 
                   <div className="col-md-6 mb-3">
-                    <label className="form-label">Email</label>
-                    <input
-                      onChange={handleWorkerRegistrationFormChange}
-                      name="email"
-                      value={workerRegistrationFormData.email}
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter email"
-                    />
-                  </div>
-
-                  <div className="col-md-6 mb-3">
                     <label className="form-label">Phone Number</label>
                     <input
                       onChange={handleWorkerRegistrationFormChange}
@@ -390,6 +386,25 @@ function LandingPage() {
                       placeholder="Enter phone number"
                     />
                   </div>
+
+                  {/* <div className="col-md-6 mb-3">
+                    <label className="form-label w-100 d-flex">
+                      OTP
+                      <button
+                        className={`btn btn-outline-primary ms-auto ${LandingStyles.otp_btn}`}
+                      >
+                        Get OTP
+                      </button>
+                    </label>
+                    <input
+                      onChange={handleWorkerRegistrationFormChange}
+                      name="otp"
+                      value={workerRegistrationFormData.otp}
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter OTP"
+                    />
+                  </div> */}
 
                   <div className="mb-3 col-md-6">
                     <label className="form-label">Password</label>

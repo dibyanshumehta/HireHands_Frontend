@@ -6,12 +6,23 @@ import {
   FaMoneyBillWave,
   FaUserCog,
   FaSignOutAlt,
+  FaPlusCircle,
 } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { workerlogout } from "../../../slice/worker/worker-auth-slice";
+import { useNavigate } from "react-router-dom";
 
 const WorkerSidebar = ({ activeTab, setActiveTab }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handlelogout = () => {
+    dispatch(workerlogout());
+    navigate("/");
+  }
   const menuItems = [
     { id: "overview", label: "Dashboard", icon: <FaHome /> },
     { id: "availableJobs", label: "Available Jobs", icon: <FaBriefcase /> },
+    { id: "workjobpost", label: "Post Job", icon: <FaPlusCircle/>},
     { id: "myApplications", label: "My Applications", icon: <FaClipboardCheck /> },
     { id: "earnings", label: "Earnings", icon: <FaMoneyBillWave /> },
     { id: "profile", label: "Profile", icon: <FaUserCog /> },
@@ -55,7 +66,7 @@ const WorkerSidebar = ({ activeTab, setActiveTab }) => {
 
       {/* Logout */}
       <div className="mt-auto pt-4">
-        <button className="btn btn-outline-light w-100 d-flex align-items-center gap-2">
+        <button className="btn btn-outline-light w-100 d-flex align-items-center gap-2" onClick = {handlelogout}>
           <FaSignOutAlt />
           Logout
         </button>

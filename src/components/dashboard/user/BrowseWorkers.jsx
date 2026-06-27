@@ -7,7 +7,7 @@ const workers = [
     name: "Ravi Kumar",
     skill: "Cook",
     experience: "4 Years",
-    location: "Delhi",
+    address: "Delhi",
     rating: 4.8,
   },
   {
@@ -15,7 +15,7 @@ const workers = [
     name: "Aman Verma",
     skill: "Plumber",
     experience: "6 Years",
-    location: "Noida",
+    address: "Noida",
     rating: 4.6,
   },
   {
@@ -23,7 +23,7 @@ const workers = [
     name: "Priya Sharma",
     skill: "Babysitter",
     experience: "3 Years",
-    location: "Ghaziabad",
+    address: "Ghaziabad",
     rating: 4.9,
   },
   {
@@ -31,7 +31,7 @@ const workers = [
     name: "Rahul Singh",
     skill: "Electrician",
     experience: "5 Years",
-    location: "Meerut",
+    address: "Meerut",
     rating: 4.7,
   },
 ];
@@ -50,15 +50,7 @@ const BrowseWorkers = () => {
       {/* Search / Filter Bar */}
       <div className="card border-0 shadow-sm rounded-4 p-3 mb-4">
         <div className="row g-3">
-          <div className="col-md-4">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by skill or name"
-            />
-          </div>
-
-          <div className="col-md-4">
+          <div className="col-md-6">
             <select className="form-select">
               <option>Filter by Skill</option>
               <option>Cook</option>
@@ -68,7 +60,7 @@ const BrowseWorkers = () => {
             </select>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-3">
             <button className="btn btn-primary w-100">
               Search Workers
             </button>
@@ -109,7 +101,7 @@ const BrowseWorkers = () => {
 
               <div className="small text-muted mb-2">
                 <FaMapMarkerAlt className="me-2" />
-                {worker.location}
+                {worker.address}
               </div>
 
               <div className="small text-warning mb-4">

@@ -17,6 +17,16 @@ const PostJobForm = () => {
 
           <div className="row">
 
+            {/* Name */}
+            <div className="col-md-6 mb-3">
+              <label className="form-label">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter your name"
+              />
+            </div>
+
             {/* Job Title */}
             <div className="col-md-6 mb-3">
               <label className="form-label">Job Title</label>
@@ -43,13 +53,9 @@ const PostJobForm = () => {
               </select>
             </div>
 
-          </div>
-
-          <div className="row">
-
             {/* Budget */}
             <div className="col-md-6 mb-3">
-              <label className="form-label">Budget / Salary</label>
+              <label className="form-label">Salary</label>
               <input
                 type="text"
                 className="form-control"
@@ -59,11 +65,11 @@ const PostJobForm = () => {
 
             {/* Location */}
             <div className="col-md-6 mb-3">
-              <label className="form-label">Location</label>
-              <input
+              <label className="form-label">Address</label>
+              <textarea
                 type="text"
                 className="form-control"
-                placeholder="Enter location"
+                placeholder="Enter your full address"
               />
             </div>
 
@@ -72,13 +78,13 @@ const PostJobForm = () => {
           {/* Date / Time */}
           <div className="row">
             <div className="col-md-6 mb-3">
-              <label className="form-label">Preferred Date</label>
+              <label className="form-label">Starting Date</label>
               <input type="date" className="form-control" />
             </div>
 
             <div className="col-md-6 mb-3">
-              <label className="form-label">Preferred Time</label>
-              <input type="time" className="form-control" />
+              <label className="form-label">End Time</label>
+              <input type="date" className="form-control" />
             </div>
           </div>
 

@@ -22,14 +22,14 @@ const UserTopbar = () => {
 
 
   return (
-    <div className="bg-white shadow-sm px-4 py-3 d-flex justify-content-between align-items-center rounded-3">
+    <div className="bg-white shadow-sm px-4 py-3 d-flex justify-content-between align-items-center rounded-3 sticky-top top-0">
 
       {/* Left Side */}
       <div>
         {userData ? (
-        <h4 className="fw-bold mb-0">Welcome Back, {userData.username}</h4>
+        <h4 className="fw-bold mb-0">Welcome Back, {userData.name}</h4>
         ) : (
-          <h4 className="fw-bold mb-0">Welcome Back, Client</h4>
+          <h4 className="fw-bold mb-0">Welcome Back, User</h4>
         )}
         <small className="text-muted">
           Manage your jobs and hire workers easily.
@@ -54,9 +54,9 @@ const UserTopbar = () => {
           <FaUserCircle size={36} className="text-primary" />
           <div>
             {userData ? (
-            <p className="mb-0 fw-semibold">{userData.username}</p>
+            <p className="mb-0 fw-semibold">{userData.name}</p>
             ) : (
-              <p className="mb-0 fw-semibold">Client</p>
+              <p className="mb-0 fw-semibold">User</p>
             )}
             <small className="text-muted">Client</small>
             </div>

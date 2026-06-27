@@ -8,14 +8,14 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { logout } from "../../../slice/user/user-auth-slice";
+import { userlogout } from "../../../slice/user/user-auth-slice";
 import { Link, useNavigate } from "react-router-dom";
 
 const UserSidebar = ({ activeTab, setActiveTab }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(userlogout());
     navigate("/");
   }
   const menuItems = [

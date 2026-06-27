@@ -38,13 +38,13 @@ const UserPage = () => {
       />
 
       {/* Main Content */}
-      <div className="flex-grow-1 p-4"
+      <div className="flex-grow-1 "
         style={{ marginLeft: "260px",}}
       >
 
         <UserTopbar />
 
-        <div className="mt-4">
+        <div className="mt-4 px-5">
           {renderContent()}
         </div>
 
