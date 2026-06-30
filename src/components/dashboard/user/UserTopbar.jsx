@@ -27,9 +27,9 @@ const UserTopbar = () => {
       {/* Left Side */}
       <div>
         {userData ? (
-        <h4 className="fw-bold mb-0">Welcome Back, {userData.name}</h4>
+        <h4 className="fw-bold mb-0">Welcome, {userData.name}</h4>
         ) : (
-          <h4 className="fw-bold mb-0">Welcome Back, User</h4>
+          <h4 className="fw-bold mb-0">Welcome, User</h4>
         )}
         <small className="text-muted">
           Manage your jobs and hire workers easily.

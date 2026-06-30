@@ -5,7 +5,7 @@ export const postUserRegistrationData = createAsyncThunk(
     "userAuth/postUserRegistrationData",
     async (FormUserData, thunkAPI) => {
         try{
-            let { data } = await axios.post("http://localhost:9000/auth/usersignup", FormUserData);
+            let { data } = await axios.post("https://hirehands-backend.onrender.com/auth/usersignup", FormUserData);
 
             if(data.status === 200) {
                 localStorage.setItem( "authToken", data.token);
@@ -22,7 +22,7 @@ export const postUserLoginData = createAsyncThunk(
     "userAuth/postUserLoginData",
     async (FormUserData, thunkAPI) => {
         try {
-            let  { data }  = await axios.post("http://localhost:9000/auth/usersignin", FormUserData);
+            let  { data }  = await axios.post("https://hirehands-backend.onrender.com/auth/usersignin", FormUserData);
             
             if (data.status === 201){
                 localStorage.setItem( "authToken", data.token);

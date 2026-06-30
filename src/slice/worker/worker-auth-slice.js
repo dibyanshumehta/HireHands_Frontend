@@ -40,7 +40,7 @@ const workerAuthSlice = createSlice({
       })
 
       .addCase(postworkerRegistrationData.rejected, (satte, action) => {
-        status.loading = false;
+        state.loading = false;
         state.error = action.payload || "Failed to register";
       })
 
